@@ -1,6 +1,6 @@
 [![build status](https://secure.travis-ci.org/mapbox/togeojson.png)](http://travis-ci.org/mapbox/togeojson) [![Coverage Status](https://coveralls.io/repos/mapbox/togeojson/badge.png)](https://coveralls.io/r/mapbox/togeojson)
 
-# Fork togeojson library for 2gis additional layers
+# Togeojson library for 2gis extra layers
 
 * Removed GPX support
 * KML folders supported
