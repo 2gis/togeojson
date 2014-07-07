@@ -2,13 +2,13 @@
 
 # Fork togeojson library for 2gis additional layers
 
-* We don't need GPX support
-* Add folder support from KML
-* Add marker icons from KML style block
+* Removed GPX support
+* KML folders supported
+* Marker icons from KML style block supported
 
 # Convert KML and GPX to GeoJSON.
 
-This converts [KML](https://developers.google.com/kml/documentation/) & [GPX](http://www.topografix.com/gpx.asp)
+This converts [KML](https://developers.google.com/kml/documentation/) 
 to
 [GeoJSON](http://www.geojson.org/), in a browser or with [nodejs](http://nodejs.org/).
 
