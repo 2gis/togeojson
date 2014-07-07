@@ -6,7 +6,7 @@
 * KML folders supported
 * Marker icons from KML style block supported
 
-# Convert KML and GPX to GeoJSON.
+# Convert KML to GeoJSON.
 
 This converts [KML](https://developers.google.com/kml/documentation/) 
 to
