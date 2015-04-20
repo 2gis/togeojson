@@ -161,8 +161,8 @@ toGeoJSON = (function() {
                 if (v.substr(0, 1) === "#") v = v.substr(1);
                 if (v.length === 6 || v.length === 3) color = v;
                 if (v.length === 8) {
-                    opacity = parseInt(v.substr(0, 2), 16) / 255;
-                    color = v.substr(2);
+                    opacity = parseInt(v.substr(6), 16) / 255;
+                    color = v.substr(0, 6);
                 }
                 return [color, isNaN(opacity) ? undefined : opacity];
             }
@@ -246,10 +246,12 @@ toGeoJSON = (function() {
                     description = nodeVal(get1(root, 'description')),
                     timeSpan = get1(root, 'TimeSpan'),
                     extendedData = get1(root, 'ExtendedData'),
-                    lineStyle = get1(root, 'LineStyle'),
-                    polyStyle = get1(root, 'PolyStyle'),
+                    lineStyle = get1(stylesById[styleUrl], 'LineStyle'),
+                    polyStyle = get1(stylesById[styleUrl], 'PolyStyle'),
                     icon = getIcon(styleUrl);
-                
+
+                properties.featureId = attr(root, 'id');
+
                 if (icon) properties.icon = icon;
 
                 if (!geoms.length) return [];
