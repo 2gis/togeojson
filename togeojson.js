@@ -274,7 +274,7 @@ toGeoJSON = (function() {
                         color = linestyles[0],
                         opacity = linestyles[1],
                         width = parseFloat(nodeVal(get1(lineStyle, 'width')));
-                    if (color) properties.stroke = color;
+                    if (color) properties['stroke-color'] = color;
                     if (!isNaN(opacity)) properties['stroke-opacity'] = opacity;
                     if (!isNaN(width)) properties['stroke-width'] = width;
                 }
@@ -284,10 +284,12 @@ toGeoJSON = (function() {
                         popacity = polystyles[1],
                         fill = nodeVal(get1(polyStyle, 'fill')),
                         outline = nodeVal(get1(polyStyle, 'outline'));
-                    if (pcolor) properties.fill = pcolor;
+
+                    properties.fill = !!(parseInt(fill, 10));
+                    if (pcolor) properties['fill-color'] = pcolor;
                     if (!isNaN(popacity)) properties['fill-opacity'] = popacity;
-                    if (fill) properties['fill-opacity'] = fill === "1" ? 1 : 0;
-                    if (outline) properties['stroke-opacity'] = outline === "1" ? 1 : 0;
+
+                    properties.outline = !!(parseInt(outline, 10));
                 }
                 if (extendedData) {
                     var datas = get(extendedData, 'Data'),
