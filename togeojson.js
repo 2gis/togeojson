@@ -16,17 +16,24 @@ toGeoJSON = (function() {
     function attr(x, y) { return x.getAttribute(y); }
     // one Y child of X, if any, otherwise null
     function get1(x, y) { var n = get(x, y); return n.length ? n[0] : null; }
-    // https://developer.mozilla.org/en-US/docs/Web/API/Node.normalize
-    function norm(el) { if (el.normalize) { el.normalize(); } return el; }
     // cast array x into numbers
     function numarray(x) {
         for (var j = 0, o = []; j < x.length; j++) o[j] = parseFloat(x[j]);
         return o;
     }
+    // get flatten value of elements tree (similar element normalize)
+    function normVal(el) {
+        var val = el.nodeValue || '';
+        if (el.childNodes) {
+            for (var i = 0; i < el.childNodes.length; i++) {
+                val += normVal(el.childNodes[i]);
+            }
+        }
+        return val;
+    }
     // get the content of a text node, if any
     function nodeVal(x) {
-        if (x) { norm(x); }
-        return (x && x.firstChild && x.firstChild.nodeValue) || '';
+        return x && normVal(x) || '';
     }
     // get one coordinate from a coordinate array, if any
     function coord1(v) { return numarray(v.replace(removeSpace, '').split(',')); }
